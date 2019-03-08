@@ -1,0 +1,11 @@
+.demo {
+    background: grey;
+    width: 100px;
+    height: 100px;
+}
+.blue {
+    background: blue;
+}
+.red {
+    background: red;
+}

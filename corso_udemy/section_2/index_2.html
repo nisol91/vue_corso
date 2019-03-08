@@ -1,0 +1,29 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+  </head>
+  <body>
+    <div id='app'>
+        <div 
+        class="demo"
+        @click="attachBlue = !attachBlue"
+        :class="{blue: attachBlue}"
+        >
+
+        </div>
+    </div>
+    <script>
+    new Vue({
+        el: '#app',
+        data: {
+          attachBlue: false,
+        },
+    })
+    </script>
+  </body>

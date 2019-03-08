@@ -87,6 +87,16 @@
             return this.counter5 > 5 ? 'greater than 5' : 'smaller than 5';
           },
         },
+        watch: {
+          // watch va semplicemente a modificare un elemento di data.
+          counter4: function() {
+            var vm = this;
+            //devo  richiamare una variabile d ambiente perche la funzione del timeout se no non la vedrebbe (credo)
+            setTimeout(() => {
+              vm.counter4 = 0;
+            }, 2000);
+          },
+        },
         methods: {
           increase: function () {
             this.counter++
