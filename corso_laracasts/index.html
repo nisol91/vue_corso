@@ -5,37 +5,128 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="main.js"></script>
+    <style>
+        .color-red {
+            color: red;
+        }
+        .color-blue {
+            color: blue;
+        }
+        .isLoading {
+            background: red;
+        }
+    </style>
 </head>
 <body>
     <div id="myApp1">
         <ul>
             <li v-for="name in names" v-text="name"></li>
         </ul>
+
         <button v-on:click="addName">Enter new name</button>
+
         <input type="text" v-model="newName" >
+
+        <button @click="" v-bind:title="title">I am a button</button>
+
+        <h1 :class="className">Im red</h1>
+
+        <button :class="{'isLoading': isLoading}" @click="toggleClass">Toggle class</button>
+
+        <h1>
+            {{ text }}, 
+            {{ reverseText }}
+        </h1>
+
+        <ul v-if="incompleteTasks">
+            <h1>Incomplete Tasks</h1>
+            <li v-for="task in incompleteTasks">
+                <label for="input">
+                    <input type="checkbox" name="" id="" v-model="task.completed"> {{ task.description }}
+                </label>
+            </li>
+        </ul>
+        <ul v-if="completedTasks">
+            <h1>Completed Tasks</h1>
+            <li v-for="task in completedTasks">{{ task.description }}</li> 
+        </ul>
     </div>
+
+    <div id="root">
+
+        <task>Go to bank</task>
+        <task>Go to home</task>
+        <task>Go to course</task>
+        <task>Go to work</task>
+
+
+   
+
+
+
+    </div>
+ 
+    
+
 
 
 </body>
 <script>
-var app = new Vue({
-    el: '#myApp1',
-    data: {
-        newName: '',
-        names: ['Jon', 'Mary', 'Rick'],
-    },
-    methods: {
-        addName() {
-            this.names.push(this.newName)
+    Vue.component('task', {
+            template: '<li>ciao</li>'
+        })
+    var app = new Vue({
+        el: '#myApp1',
+        data: {
+            newName: '',
+            names: ['Jon', 'Mary', 'Rick'],
+            title: 'this is my vue hover title',
+            className: 'color-red',
+            isLoading: false,
+            text: 'Hello World',
+            tasks: [//array di oggetti
+                { description: 'go to the store', completed: false},
+                { description: 'run', completed: false },
+                { description: 'gym', completed: false },
+                { description: 'do homeworks', completed: false },
+            ]
+        },
+        methods: {
+            addName() {
+                this.names.push(this.newName)
 
-            this.newName = '';
+                this.newName = '';
+            },
+            toggleClass() {
+                this.isLoading = true
+            },
+            
+        },
+        computed: {
+            reverseText() {
+                return this.text.split('').reverse().join('');
+            },
+            incompleteTasks() {
+                return this.tasks.filter(task => ! task.completed)
+
+                //che equivale a console.log();
+                
+                // this.tasks.filter(function(task) {
+                //     return ! task.completed
+                // })
+            },
+            completedTasks() {
+                return this.tasks.filter(task => task.completed)
+            },
+            
         }
-    }
-})
+    })
+    console.log(app);
+    
 </script>
+    <script src="main.js"></script>
+
 </html>
 
-<!-- #myApp1: add new name to a list -->
