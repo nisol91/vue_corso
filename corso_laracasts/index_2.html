@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    
+    <style>
+        .color-red {
+            color: red;
+        }
+        .color-blue {
+            color: blue;
+        }
+        .isLoading {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <button @click="control">click</button>
+        
+
+        <message title="ciao" body="lorem"></message>
+        <message title="ciao2" body="lorem2"></message>
+        <message title="ciao3" body="lorem3"></message>
+
+        <modal v-if = "showModal" @close = "showModal = false">ciao questo essere modal. </modal>
+        <button @click = "showModal = true">Mostra modal</button>
+
+
+    </div>
+
+<script src="main_2.js"></script>
+</html>
+
